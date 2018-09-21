@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Synthesizer</string>
+    <string name="button_synth_a">A</string>
+    <string name="button_synth_b">B</string>
+    <string name="button_synth_bb">B♭</string>
+    <string name="button_synth_c">C</string>
+    <string name="button_synth_cs">C♯</string>
+    <string name="button_synth_d">D</string>
+    <string name="button_synth_ds">D♯</string>
+    <string name="button_synth_e">E</string>
+    <string name="button_synth_f">F</string>
+    <string name="button_synth_fs">F♯</string>
+    <string name="button_synth_g">G</string>
+    <string name="button_synth_gs">G♯</string>
+    <string name="scale">Scale</string>
+    <string name="techie_5">Techie 5</string>
+    <string name="onepunch">OnePunch</string>
+    <string name="odeToJoy">odeToJoy</string>
+    <string name="black_swan">Black Swan</string>
+    <string name="twinkle_twinkle">Twinkle Twinkle</string>
+    <string name="twinkle_twinkle_little_star">Twinkle Twinkle Little Star</string>
+    <string name="finale">Finale</string>
+</resources>
