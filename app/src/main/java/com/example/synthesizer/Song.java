@@ -20,25 +20,6 @@ public class Song {
 
     }
 
-//    public void add(Note note)
-//    {
-//
-//        notes.add(note);
-//
-//    }
-
-//    public void add(Chord chord)
-//    {
-//
-//        for(Note note: chord.getChord())
-//        {
-//
-//            notes.add(note);
-//
-//        }
-//
-//    }
-
     public Note[] getNotes() {
         return notes;
     }

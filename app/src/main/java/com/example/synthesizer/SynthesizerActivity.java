@@ -31,7 +31,6 @@ public class SynthesizerActivity extends AppCompatActivity implements View.OnCli
     private Button buttonFs;
     private Button buttonG;
     private Button buttonGs;
-    private Button buttonOnePunch;
     private Button buttonTechieFive;
     private Button buttonStar;
     private Button buttonFinale;
@@ -217,7 +216,7 @@ public class SynthesizerActivity extends AppCompatActivity implements View.OnCli
             case R.id.button_synth_star:
                 Accompany(0, getTwinkleTwinkle());
             case R.id.button_synth_finale:
-                Accompany(0, Finale());
+                Accompany(0, Finale(), FinaleAccompanyment1(), FinaleAccompanyment2());
         }
 
     }
@@ -260,12 +259,74 @@ public class SynthesizerActivity extends AppCompatActivity implements View.OnCli
 
                  (new Note(noteHighA, 300)),
                  (new Note(noteHighA, 175)),
-                 (new Note(noteHighBb, 175)),
+                 (new Note(noteHighBb, 200)),
                  (new Note(noteHighC, 300)),
                  (new Note(noteHighF, 300)),
                  (new Note(noteHighE, 300)),
                  (new Note(noteHighG, 300)),
-                 (new Note(noteHighF, 175))};
+                 (new Note(noteHighF, 750)),
+
+                        (new Note(noteGs, 300)),
+                        (new Note(noteGs, 175)),
+                        (new Note(noteHighBb, 175)),
+                        (new Note(noteHighC, 275)),
+                        (new Note(noteGs, 300)),
+                        (new Note(noteHighBb, 300)),
+                        (new Note(noteHighBb, 175)),
+                        (new Note(noteHighC, 175)),
+                        (new Note(noteG, 300)),
+                        (new Note(noteDs, 300)),
+
+                        (new Note(noteGs, 300)),
+                        (new Note(noteGs, 175)),
+                        (new Note(noteHighBb, 175)),
+                        (new Note(noteHighC, 300)),
+                        (new Note(noteHighGs, 300)),
+                        (new Note(noteHighG, 300)),
+                        (new Note(noteHighDs, 300)),
+                        (new Note(noteHighBb, 300)),
+                        (new Note(noteG, 300)),
+
+                        (new Note(noteGs, 300)),
+                        (new Note(noteGs, 175)),
+                        (new Note(noteHighBb, 175)),
+                        (new Note(noteHighC, 300)),
+                        (new Note(noteGs, 300)),
+                        (new Note(noteHighBb, 300)),
+                        (new Note(noteHighBb, 175)),
+                        (new Note(noteHighC, 175)),
+                        (new Note(noteG, 300)),
+                        (new Note(noteDs, 300)),
+
+                        (new Note(noteHighA, 300)),
+                        (new Note(noteHighA, 175)),
+                        (new Note(noteHighBb, 200)),
+                        (new Note(noteHighC, 300)),
+                        (new Note(noteHighF, 300)),
+                        (new Note(noteHighD, 600)),
+                        (new Note(noteHighC, 150)),
+                        (new Note(noteHighC, 150)),
+                        (new Note(noteHighC, 150)),
+                        (new Note(noteHighC, 150)),
+
+                        //Finale
+
+                        (new Note(noteGs, 300)),
+                        (new Note(noteGs, 175)),
+                        (new Note(noteHighBb, 175)),
+                        (new Note(noteHighC, 275)),
+                        (new Note(noteGs, 300)),
+                        (new Note(noteHighBb, 300)),
+                        (new Note(noteHighBb, 175)),
+                        (new Note(noteHighC, 175)),
+                        (new Note(noteG, 300)),
+                        (new Note(noteDs, 300)),
+
+                        (new Note(noteGs, 300)),
+
+                };
+
+
 
         return f;
 
@@ -273,14 +334,47 @@ public class SynthesizerActivity extends AppCompatActivity implements View.OnCli
 
     private Note[] FinaleAccompanyment1() {
 
-        Note[] fa1 = {new Note(noteHighBb,250)};
+        Note[] fa1 =
+
+                {new Note(noteHighBb, 2475),
+                 new Note(noteHighC, 2450),
+                 new Note(noteHighCs, 2475),
+                 new Note(noteHighD, 2625),
+
+                        new Note(noteHighBb, 2475),
+                        new Note(noteHighC, 2450),
+                        new Note(noteHighCs, 2475),
+                        new Note(noteHighA, 2475),
+
+                        new Note(noteHighC, 1875),
+                        new Note(noteHighC, 600),
+                        new Note(noteHighC, 1875),
+                };
+
+
+
         return fa1;
 
     }
 
     private Note[] FinaleAccompanyment2() {
 
-        Note[] fa2 = {new Note(noteHighF, 250)};
+        Note[] fa2 = {new Note(noteHighF, 2475),
+                      new Note(noteHighGs, 1250),
+                      new Note(noteHighG, 1200),
+                      new Note(noteHighGs, 2475),
+                      new Note(noteHighA, 2625),
+
+                            new Note(noteHighF, 2475),
+                            new Note(noteHighGs, 1250),
+                            new Note(noteHighG, 1200),
+                            new Note(noteHighGs, 4950),
+
+                            new Note(noteHighF, 1875),
+                            new Note(noteHighDs, 600),
+                            new Note(noteHighDs, 1875),
+
+                     };
         return fa2;
 
     }
@@ -383,18 +477,6 @@ public class SynthesizerActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-//    private void playSong(Song song) {
-//
-//        for(Note note: song.getNotes())
-//        {
-//
-//                playNote(note);
-//                //delay(note.getDelay());
-//
-//        }
-//
-//    }
-
     private void playNote(int note, int loops) {
         soundPool.play(note, DEFAULT_VOLUME, DEFAULT_VOLUME, DEFAULT_PRIORITY,0, DEFAULT_RATE);
     }
@@ -406,10 +488,8 @@ public class SynthesizerActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void Accompany(long startDelay, Note[]... songs) {
-        //the start delay makes sure all tasks are scheduled before songs are played
         long base = SystemClock.uptimeMillis() + startDelay;
         for (Note[] song: songs) {
-            //delay accumulates as the song plays
             long delay = 0;
             for (final Note note: song) {
                 handler.postAtTime(new Runnable() {
@@ -417,7 +497,7 @@ public class SynthesizerActivity extends AppCompatActivity implements View.OnCli
                     public void run() {
                         soundPool.play(note.getNoteId(), 1f, 1f, 1, 0, 1f);
                     }
-                }, base + delay); //schedule the note to play at the sum of the uptime and the delay
+                }, base + delay);
                 delay+=note.getDelay();
             }
         }
@@ -426,7 +506,6 @@ public class SynthesizerActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onStop() {
         super.onStop();
-        //cancel all Handler callbacks to avoid lifecycle errors
         handler.removeCallbacksAndMessages(null);
     }
 }
